@@ -1,0 +1,36 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.17.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.ericdallo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+archivesBaseName = 'btgclicksign'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-web"
+	compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+	compile "org.springframework.boot:spring-boot-devtools"
+	compile "com.github.ljtfreitas:java-restify-spring-starter:1.6.4"
+	compile "com.github.ljtfreitas:java-restify-spring-autoconfigure:1.6.4"
+		
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+
+}
