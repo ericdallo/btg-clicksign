@@ -1,6 +1,10 @@
 package com.ericdallo.btgclicksign.document;
 
+import java.time.LocalDateTime;
+
+import com.ericdallo.btgclicksign.serializer.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class ClicksignDocument {
 
@@ -14,22 +18,23 @@ public class ClicksignDocument {
 	private String filename;
 	
 	@JsonProperty("uploaded_at")
-	private String uploaded_at;
+	private String uploadedAt;
 	
 	@JsonProperty("updated_at")
-	private String updated_at;
+	private String updatedAt;
 	
 	@JsonProperty("finished_at")
-	private String finished_at;
+	private String finishedAt;
 	
 	@JsonProperty("deadline_at")
-	private String deadline_at;
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	private LocalDateTime deadlineAt;
 	
 	@JsonProperty("status")
 	private String status;
 	
 	@JsonProperty("auto_close")
-	private boolean auto_close;
+	private boolean autoClose;
 
 	public String getKey() {
 		return key;
@@ -55,36 +60,36 @@ public class ClicksignDocument {
 		this.filename = filename;
 	}
 
-	public String getUploaded_at() {
-		return uploaded_at;
+	public String getUploadedAt() {
+		return uploadedAt;
 	}
 
-	public void setUploaded_at(String uploaded_at) {
-		this.uploaded_at = uploaded_at;
+	public void setUploadedAt(String uploadedAt) {
+		this.uploadedAt = uploadedAt;
 	}
 
-	public String getUpdated_at() {
-		return updated_at;
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
-	public String getFinished_at() {
-		return finished_at;
+	public String getFinishedAt() {
+		return finishedAt;
 	}
 
-	public void setFinished_at(String finished_at) {
-		this.finished_at = finished_at;
+	public void setFinishedAt(String finishedAt) {
+		this.finishedAt = finishedAt;
 	}
 
-	public String getDeadline_at() {
-		return deadline_at;
+	public LocalDateTime getDeadlineAt() {
+		return deadlineAt;
 	}
 
-	public void setDeadline_at(String deadline_at) {
-		this.deadline_at = deadline_at;
+	public void setDeadlineAt(LocalDateTime deadlineAt) {
+		this.deadlineAt = deadlineAt;
 	}
 
 	public String getStatus() {
@@ -95,12 +100,12 @@ public class ClicksignDocument {
 		this.status = status;
 	}
 
-	public boolean isAuto_close() {
-		return auto_close;
+	public boolean isAutoClose() {
+		return autoClose;
 	}
 
-	public void setAuto_close(boolean auto_close) {
-		this.auto_close = auto_close;
+	public void setAutoClose(boolean autoClose) {
+		this.autoClose = autoClose;
 	}
 	
 }

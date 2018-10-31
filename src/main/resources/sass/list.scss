@@ -1,0 +1,60 @@
+@import 'base';
+
+.title {
+	margin: 1em auto 2em;
+	text-align: center;
+	display: block;
+	font-size: 2em;
+	font-family: "Montserrat-Regular";
+}
+
+.documents {
+	margin: 1em auto;
+	text-align: center;
+}
+
+.documents .document {
+	background: #007EF2;
+	width: 22em;
+	color: white;
+	font-family: "Montserrat-Regular";
+	display: inline-block ;
+	margin: 1em ;
+	cursor: pointer;
+	transition: box-shadow 0.1s;
+}
+
+.documents .document:focus,
+.documents .document:hover {
+    outline: none ;
+    box-shadow: 10px 10px 10px #e2e2e2;
+}
+
+.documents .document .key {
+	font-size: 0.9em;
+	text-align: center;
+	margin-bottom: 3em;
+}
+
+.documents .document .details .line {
+	display: block;
+	margin-bottom: 0.5em;
+	line-height: 1.5em;
+	
+}
+
+.documents .document .details dt {
+	font-size: 0.9em;
+	margin-left: 0.5em;
+	display: inline-block;
+	vertical-align: super;
+}
+
+.documents .document .details dd {
+	margin-left: 0.4em;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 70%;
+}
