@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>BTG - Clicksign | Documents</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Cache-control" content="public"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no shrink-to-fit=no" />
@@ -10,30 +11,45 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="application-name" content="BTG-clicksign"/>
     <meta name="apple-mobile-web-app-title" content="BTG-clicksign"/>
-	<title>BTG - Clicksign | Documents</title>
-	<link rel="stylesheet" href="/css/list.css"/>
+    
+    <link rel="stylesheet" href="/css/list.css"/>
+    
+    <script src="/bower_components/async-define/async-define.min.js"/>
+    <script src="/bower_components/events-amd/events-amd.min.js"/>
+    <script src="/bower_components/doc-amd/doc.min.js"/>
+    <script src="/bower_components/ajax-amd/ajax.min.js"/>
+    
+    <script src="/js/listDocuments.js"/>
+   
 </head>
 <body>
+	<input id="signers-switch" type="checkbox" class="signers-switch"/>
+	<section id="menu" class="menu">
+		<label for="signers-switch" class="confirm"></label>
+	</section>
 	<img src="/images/btg-logo.png" class="btg-logo"/>
 	<h1 class="title">Documents</h1>
 	<article class="documents">
-		<section th:each="document : ${documents.documents}" class="document">
-			<h2 th:text="${document.key}" class="key">Key</h2>
-			<dl class="details">
-				<div class="line">
-					<dt>File:</dt>
-					<dd th:text="${document.filename}"></dd>
-				</div>
-				<div class="line">
-					<dt>status:</dt>
-					<dd th:text="${document.status}"></dd>
-				</div>
-				<div class="line">
-					<dt>Deadline:</dt>
-					<dd th:text="${#temporals.format(document.deadlineAt, 'dd-MM-yyyy HH:mm')}"></dd>
-				</div>
-			</dl>
-		</section>
+		<label th:for="${document.key}" th:each="document : ${documents.documents}" >
+			<input type="checkbox" name="documentKey" th:id="${document.key}" class="switch"/>
+			<section class="document">
+				<h2 th:text="${document.key}" class="key">Key</h2>
+				<dl class="details">
+					<div class="line">
+						<dt>File:</dt>
+						<dd th:text="${document.filename}"></dd>
+					</div>
+					<div class="line">
+						<dt>status:</dt>
+						<dd th:text="${document.status}"></dd>
+					</div>
+					<div class="line">
+						<dt>Deadline:</dt>
+						<dd th:text="${#temporals.format(document.deadlineAt, 'dd-MM-yyyy HH:mm')}"></dd>
+					</div>
+				</dl>
+			</section>
+		</label>
 	</article>
 </body>
 </html>

@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import 'reset';
+
 @font-face {
     font-family: 'Montserrat-Regular';
     src: url('/fonts/Montserrat-Regular.otf');
@@ -21,3 +23,6 @@ body {
 .btg-logo {
 	width: 350px;
 }
+
+$light-blue: #007EF2;
+$light-green: #27ae60;
