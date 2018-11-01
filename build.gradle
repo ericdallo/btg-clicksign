@@ -63,3 +63,4 @@ bootRun {
 }
 
 build.dependsOn compassCompile
+build.dependsOn clientInstall
