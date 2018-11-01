@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker rmi -f ericdallo/btg-clicksign
-docker pull ericdallo/btg-clicksign
-docker rm -f btg-clicksign
-docker run -d --name btg-clicksign -p 80:7000  ericdallo/btg-clicksign
+docker rmi -f ericdallo/btgclicksign
+docker pull ericdallo/btgclicksign
+docker rm -f btgclicksign
+docker run -d --name btgclicksign -p 80:7000  ericdallo/btgclicksign
