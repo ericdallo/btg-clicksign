@@ -20,6 +20,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: "com.github.robfletcher.compass"
 apply plugin: 'com.craigburke.client-dependencies'
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.ericdallo'
 version = '0.0.1-SNAPSHOT'
