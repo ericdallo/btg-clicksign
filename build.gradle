@@ -48,3 +48,5 @@ dependencies {
 bootRun {
 	addResources = true;
 }
+
+build.dependsOn compassCompile
