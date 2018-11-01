@@ -2,9 +2,7 @@ FROM openjdk:8
 
 COPY . /app
 
-RUN mkdir -p /app && \
-    cd /app && \
-    ./gradlew build
+RUN mkdir -p /app
 
 WORKDIR /app
 
