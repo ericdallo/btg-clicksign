@@ -118,7 +118,7 @@
 		}
 		
 		.batch-resume {
-			margin-top: 2em;
+			margin-top: 3em;
 			opacity: 0;
 			visibility: hidden;
 			width: calc(100% - 2em);
@@ -153,6 +153,14 @@
 				
 				&:hover {
 					background-color: $light-green;
+				}
+				
+				&:focus {
+					outline: none;
+				}
+				
+				&.loading {
+					background-image: url('/images/loading.gif');
 				}			
 			}
 		}
