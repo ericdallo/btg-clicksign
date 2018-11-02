@@ -33,12 +33,22 @@
 			<div th:if="${!signers.empty}">
 				<h3 class="choose-signer">Escolha um signatario</h3>
 				<ul class="signers">
-					<li th:each="signer : ${signers}" th:id="${'signer-' + signer.key}" th:text="${signer.name}"></li>
+					<div th:each="signer : ${signers}">
+						<input type="radio" name="selected-signer" th:id="${'signer-switch-' + signer.key}" class="selected-signer-switch"/>
+						<label  th:for="${'signer-switch-' + signer.key}">
+							<li th:id="${'signer-' + signer.key}" th:text="${signer.name}"></li>
+						</label>					
+					</div>
 				</ul>
 			</div>
 		</header>
-		<main class="batch-resume">
-			
+		<main id="batch-resume" class="batch-resume">
+			<p>Documentos Selecionados</p>
+			<ul class="documents-selected">
+				<li></li>
+			</ul>
+			<p>Deseja criar o lote para estes documentos e este signatario?</p>
+			<button></button>
 		</main>
 	</section>
 	<main class="main-content">

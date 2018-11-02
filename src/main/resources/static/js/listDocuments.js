@@ -13,5 +13,14 @@ define(['doc'], function($) {
 			}
 		});
 		
+		$('input[name="selected-signer"]').on('change', function() {
+			
+			var selectedSigner = $(this);
+			
+			if (selectedSigner.first().checked) {
+				$('#batch-resume').addClass('signer-selected');
+			}
+		});
+		
 	});
 });

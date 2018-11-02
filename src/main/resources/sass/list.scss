@@ -98,6 +98,15 @@
 		.signers {
 			margin-top: 2em;
 			
+			.selected-signer-switch {
+				display: none;
+				
+				&:checked ~ label li {
+					background-color: #1b6da3;
+					font-weight: bold;
+				}
+			}
+			
 			li {
 				padding: 1em 0;
 				text-align: center;
@@ -118,7 +127,6 @@
 		left: calc(30% - 2em);
 		width: calc(70% + 2em);
 		height: 100%;
-		background: red;
 		
 		&.signer-selected {
 			opacity: 1;
