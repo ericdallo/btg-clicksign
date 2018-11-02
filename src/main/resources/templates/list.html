@@ -26,7 +26,7 @@
 	<input id="signers-switch" type="checkbox" class="signers-switch"/>
 	<section id="menu" class="menu">
 		<label for="signers-switch" class="confirm"></label>
-		<header class="signers-content">
+		<section class="signers-content">
 			<div th:if="${signers.empty}">
 				<h3 class="empty-signers">Nenhum signatario no banco de dados</h3>
 			</div>
@@ -40,16 +40,12 @@
 						</label>					
 					</div>
 				</ul>
+				<div id="batch-resume" class="batch-resume">
+					<p class="confirm-question">Deseja criar o lote para estes documentos e este signatario?</p>
+					<button id="send-documents" class="send-button"></button>
+				</div>
 			</div>
-		</header>
-		<main id="batch-resume" class="batch-resume">
-			<p>Documentos Selecionados</p>
-			<ul class="documents-selected">
-				<li></li>
-			</ul>
-			<p>Deseja criar o lote para estes documentos e este signatario?</p>
-			<button></button>
-		</main>
+		</section>
 	</section>
 	<main class="main-content">
 		<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>

@@ -43,7 +43,7 @@
 }
 
 .menu {
-	$menuSize: 75%;
+	$menuSize: 25%;
 	
 	position: fixed;
 	right: 0;
@@ -55,7 +55,7 @@
 	transition: margin-right 0.4s;
 	
 	&.enabled {
-		margin-right: calc(-75% + 5em);
+		margin-right: calc(-25% + 5em);
 	}
 	
 	.confirm {
@@ -77,8 +77,7 @@
 	.signers-content {
 		display: inline-block;
 		position: absolute;
-		width: calc(30% - 2em);
-		height: 100%;
+		width: calc(100% - 2em);
 		font-family: "Montserrat-Regular";
 		color: white;
 		
@@ -117,20 +116,45 @@
 				}
 			}
 		}
-	}
-	
-	.batch-resume {
-		position: absolute;
-		opacity: 0;
-		visibility: hidden;
-		top: 0;
-		left: calc(30% - 2em);
-		width: calc(70% + 2em);
-		height: 100%;
 		
-		&.signer-selected {
-			opacity: 1;
-			visibility: visible;
+		.batch-resume {
+			margin-top: 2em;
+			opacity: 0;
+			visibility: hidden;
+			width: calc(100% - 2em);
+			font-family: "Montserrat-Regular";
+			color: white;
+			padding: 1em;
+			transition: 0.1s opacity;
+			
+			&.signer-selected {
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			.confirm-question {
+				font-size: 1.2em;
+				display: block;
+				text-align: center;
+				wdith: 100%;
+			}
+			
+			.send-button {
+				cursor: pointer;
+				margin: 1em auto;
+				display: block;
+				width: 4em;
+				height: 4em;
+				border: none;
+				border-radius: 50%;
+				background: $dark-green url('/images/check.png') no-repeat center center;
+				background-size: 2.4em;
+				transition: background-color 0.1s;
+				
+				&:hover {
+					background-color: $light-green;
+				}			
+			}
 		}
 	}
 	
