@@ -30,9 +30,13 @@
 			<h3 class="choose-signer">Choose a signer</h3>
 		</div>
 	</section>
-	<img src="/images/btg-logo.png" class="btg-logo"/>
+	<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>
 	<h1 class="title">Documents</h1>
-	<article class="documents">
+	<div th:if="${documents == null}" class="error">
+		<p>Ocorreu um erro ao comunicar com a Clicksign :(</p>
+		<p>Verifique se o access token esta correto</p>
+	</div>
+	<article th:if="${documents != null}" class="documents">
 		<label th:for="${document.key}" th:each="document : ${documents.documents}" >
 			<input type="checkbox" name="documentKey" th:id="${document.key}" class="switch"/>
 			<section class="document">

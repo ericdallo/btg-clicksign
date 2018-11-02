@@ -1,5 +1,7 @@
 package com.ericdallo.btgclicksign.document;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,11 @@ public class DocumentsController {
 	@GetMapping("/documents")
 	public ModelAndView list(@RequestParam(name="accessToken", required=true) String accessToken, Model model) {
 		
-		ClicksignDocuments documents = clicksignAPI.listDocuments(accessToken);
+		Optional<ClicksignDocuments> documents = clicksignAPI.listDocuments(accessToken);
 		
-		model.addAttribute("documents", documents);
+		if (documents.isPresent()) {
+			model.addAttribute("documents", documents.get());
+		}
 		
 		return new ModelAndView("list");
 	}

@@ -1,5 +1,17 @@
 @import 'base';
 
+.error {
+	margin: auto;
+	display: block;
+	text-align: center;
+	
+	p {
+		font-size: 1.4em;
+		font-family: "Montserrat-Regular";
+		margin: 0.5em 0;
+	}
+}
+
 .signers-switch {
 	display: none;
 	

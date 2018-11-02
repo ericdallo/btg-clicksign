@@ -1,5 +1,7 @@
 package com.ericdallo.btgclicksign.api;
 
+import java.util.Optional;
+
 import com.ericdallo.btgclicksign.document.ClicksignDocuments;
 import com.github.ljtfreitas.restify.http.contract.Get;
 import com.github.ljtfreitas.restify.http.contract.Header;
@@ -11,6 +13,6 @@ public interface ClicksignAPI {
 	@Get
 	@Path("/documents")
 	@Header(name = "Content-Type", value = "application/json")
-	ClicksignDocuments listDocuments(@QueryParameter("access_token") String accessToken);
+	Optional<ClicksignDocuments> listDocuments(@QueryParameter("access_token") String accessToken);
 
 }
