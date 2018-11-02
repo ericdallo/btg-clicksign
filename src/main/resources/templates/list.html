@@ -26,45 +26,50 @@
 	<input id="signers-switch" type="checkbox" class="signers-switch"/>
 	<section id="menu" class="menu">
 		<label for="signers-switch" class="confirm"></label>
-		<div class="menu-content">
+		<header class="signers-content">
 			<div th:if="${signers.empty}">
 				<h3 class="empty-signers">Nenhum signatario no banco de dados</h3>
 			</div>
 			<div th:if="${!signers.empty}">
-				<h3 class="choose-signer">Choose a signer</h3>
-				<ul th:each="signer : ${signers}">
-					<li th:text="${signer.name}"></li>
+				<h3 class="choose-signer">Escolha um signatario</h3>
+				<ul class="signers">
+					<li th:each="signer : ${signers}" th:id="${'signer-' + signer.key}" th:text="${signer.name}"></li>
 				</ul>
 			</div>
-		</div>
+		</header>
+		<main class="batch-resume">
+			
+		</main>
 	</section>
-	<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>
-	<h1 class="title">Documents</h1>
-	<div th:if="${documents == null}" class="error">
-		<p>Ocorreu um erro ao comunicar com a Clicksign :(</p>
-		<p>Verifique se o access token esta correto</p>
-	</div>
-	<article th:if="${documents != null}" class="documents">
-		<label th:for="${document.key}" th:each="document : ${documents.documents}" >
-			<input type="checkbox" name="documentKey" th:id="${document.key}" class="switch"/>
-			<section class="document">
-				<h2 th:text="${document.key}" class="key">Key</h2>
-				<dl class="details">
-					<div class="line">
-						<dt>File:</dt>
-						<dd th:text="${document.filename}"></dd>
-					</div>
-					<div class="line">
-						<dt>status:</dt>
-						<dd th:text="${document.status}"></dd>
-					</div>
-					<div class="line">
-						<dt>Deadline:</dt>
-						<dd th:text="${#temporals.format(document.deadlineAt, 'dd-MM-yyyy HH:mm')}"></dd>
-					</div>
-				</dl>
-			</section>
-		</label>
-	</article>
+	<main class="main-content">
+		<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>
+		<h1 class="title">Documents</h1>
+		<div th:if="${documents == null}" class="error">
+			<p>Ocorreu um erro ao comunicar com a Clicksign :(</p>
+			<p>Verifique se o access token esta correto</p>
+		</div>
+		<article th:if="${documents != null}" class="documents">
+			<label th:for="${document.key}" th:each="document : ${documents.documents}" >
+				<input type="checkbox" name="documentKey" th:id="${document.key}" class="switch"/>
+				<section class="document">
+					<h2 th:text="${document.key}" class="key">Key</h2>
+					<dl class="details">
+						<div class="line">
+							<dt>File:</dt>
+							<dd th:text="${document.filename}"></dd>
+						</div>
+						<div class="line">
+							<dt>status:</dt>
+							<dd th:text="${document.status}"></dd>
+						</div>
+						<div class="line">
+							<dt>Deadline:</dt>
+							<dd th:text="${#temporals.format(document.deadlineAt, 'dd-MM-yyyy HH:mm')}"></dd>
+						</div>
+					</dl>
+				</section>
+			</label>
+		</article>
+	</main>
 </body>
 </html>
