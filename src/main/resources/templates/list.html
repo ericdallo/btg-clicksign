@@ -27,7 +27,15 @@
 	<section id="menu" class="menu">
 		<label for="signers-switch" class="confirm"></label>
 		<div class="menu-content">
-			<h3 class="choose-signer">Choose a signer</h3>
+			<div th:if="${signers.empty}">
+				<h3 class="empty-signers">Nenhum signatario no banco de dados</h3>
+			</div>
+			<div th:if="${!signers.empty}">
+				<h3 class="choose-signer">Choose a signer</h3>
+				<ul th:each="signer : ${signers}">
+					<li th:text="${signer.name}"></li>
+				</ul>
+			</div>
 		</div>
 	</section>
 	<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>

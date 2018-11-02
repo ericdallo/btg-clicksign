@@ -61,6 +61,8 @@ dependencies {
 	compile "org.thymeleaf.extras:thymeleaf-extras-java8time"
 	compile "com.github.ljtfreitas:java-restify-spring-starter:1.6.4"
 	compile "com.github.ljtfreitas:java-restify-spring-autoconfigure:1.6.4"
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	compile "mysql:mysql-connector-java"
 		
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 
