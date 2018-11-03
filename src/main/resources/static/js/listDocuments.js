@@ -2,7 +2,8 @@ define(['doc', 'ajax'], function($, ajax) {
 	'use strict'
 	document.addEventListener("DOMContentLoaded", function() {
 		
-		var $message = $('#message');
+		var $successMessage = $('#success-message'),
+			$errorMessage = $('#error-message');
 		
 		$('.documents .switch').on('change', function() {
 			
@@ -55,17 +56,20 @@ define(['doc', 'ajax'], function($, ajax) {
 				'access_token': urlParams.get('accessToken')
 			};
 			
-			$message.removeClass('error');
+			$errorMessage.removeClass('enabled');
+			$successMessage.removeClass('enabled');
 			
 			ajax.post('/documents/batch', batch, {
 				'success': function(response, xhr) {
-					$message.html('URL para assinatura: <a target="_blank" href="' + response.url + '">' + response.url + '</a>');
-					$message.addClass('success');
+					var $link = $successMessage.find('.link');
+					
+					$link.html(response.url);
+					$link.attr('href', response.url)
+					$successMessage.addClass('enabled');
+					$('#signers-switch').first().checked = false;
 				},
 				'error': function(response, xhr){
-					$message.html('Ocorreu um erro ao criar o lote :(');
-					$message.removeClass('success');
-					$message.addClass('error');
+					$errorMessage.addClass('enabled');
 				},
 				'complete': function(){
 					$sendButton.removeClass('loading');
@@ -76,6 +80,10 @@ define(['doc', 'ajax'], function($, ajax) {
 				},
 				async: true
 			});
+		});
+		
+		$('.close').on('click', function() {
+			$successMessage.removeClass('enabled');
 		});
 		
 	});
