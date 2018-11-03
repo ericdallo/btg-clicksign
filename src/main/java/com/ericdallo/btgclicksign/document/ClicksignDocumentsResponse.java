@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ClicksignDocuments {
+public class ClicksignDocumentsResponse {
 
 	@JsonProperty("documents")
 	private List<ClicksignDocument> documents;

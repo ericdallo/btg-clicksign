@@ -23,6 +23,7 @@
    
 </head>
 <body>
+	<p id="message" class="message"></p>
 	<input id="signers-switch" type="checkbox" class="signers-switch"/>
 	<section id="menu" class="menu">
 		<label for="signers-switch" class="confirm"></label>
@@ -34,7 +35,7 @@
 				<h3 class="choose-signer">Escolha um signatario</h3>
 				<ul class="signers">
 					<div th:each="signer : ${signers}">
-						<input type="radio" name="selected-signer" th:id="${'signer-switch-' + signer.key}" th:value="${signer.key}" class="selected-signer-switch"/>
+						<input type="radio" name="selected-signer" th:id="${'signer-switch-' + signer.key}" th:value="${signer.key}" th:attr="data-signas=${signer.type}" class="selected-signer-switch"/>
 						<label  th:for="${'signer-switch-' + signer.key}">
 							<li th:id="${'signer-' + signer.key}" th:text="${signer.name}"></li>
 						</label>					
