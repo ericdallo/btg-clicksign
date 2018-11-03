@@ -20,6 +20,22 @@ body {
 		background-size:40px 60px;
 }
 
+::-webkit-scrollbar {
+    width: 14px;
+}
+ 
+::-webkit-scrollbar-track {
+    
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #95a5a6;
+    
+    &:hover {
+    	background-color: #7f8c8d;
+    } 
+}
+
 .btg-logo {
 	width: 350px;
 }
