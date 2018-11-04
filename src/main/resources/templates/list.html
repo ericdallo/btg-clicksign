@@ -55,13 +55,18 @@
 	<main class="main-content">
 		<a href="/"><img src="/images/btg-logo.png" class="btg-logo"/></a>
 		<h1 class="title">Documents</h1>
+		<p class="list-subtitle">Modo lista</p>
+		<input id="list-switch" type="checkbox" class="input-switch" checked="true" />
+		<label for="list-switch" class="switch list-switch">
+			<span class="slider"></span>
+		</label>
 		<div th:if="${documents == null}" class="error">
 			<p>Ocorreu um erro ao comunicar com a Clicksign :(</p>
 			<p>Verifique se o access token esta correto</p>
 		</div>
 		<article th:if="${documents != null}" class="documents">
-			<label th:for="${document.key}" th:each="document : ${documents.documents}" >
-				<input type="checkbox" name="documentKey" th:id="${document.key}" class="switch"/>
+			<label th:for="'document-' + ${document.key}" th:each="document : ${documents.documents}" >
+				<input type="checkbox" name="documentKey" th:id="'document-' + ${document.key}" class="switch"/>
 				<section class="document">
 					<h2 th:text="${document.key}" class="key">Key</h2>
 					<dl class="details">
@@ -80,6 +85,26 @@
 					</dl>
 				</section>
 			</label>
+		</article>
+		<article th:if="${documents != null}" class="list-documents">
+			<table class="table-documents">
+				<thead>
+					<tr>
+						<th>KEY</th>
+						<th>FILENAME</th>
+						<th>STATUS</th>
+						<th>DEADLINE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:id="'row-' + ${document.key}" th:each="document : ${documents.documents}" class="document-row">
+						<td th:text="${document.key}"></td>
+						<td th:text="${document.filename}"></td>
+						<td th:text="${document.status}"></td>
+						<td th:text="${#temporals.format(document.deadlineAt, 'dd-MM-yyyy HH:mm')}"></td>
+					</tr>
+				</tbody>
+			</table>
 		</article>
 	</main>
 </body>

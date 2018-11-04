@@ -1,19 +1,39 @@
 define(['doc', 'ajax'], function($, ajax) {
 	'use strict'
+	
+	var showMenu = function() {
+		var hasSomeDocumentSelected = $('.documents .switch:checked').isPresent();
+		
+		if (hasSomeDocumentSelected) {
+			$('#menu').addClass('enabled');
+		} else {
+			$('#menu').removeClass('enabled');
+		}
+	}
+	
 	document.addEventListener("DOMContentLoaded", function() {
 		
 		var $successMessage = $('#success-message'),
 			$errorMessage = $('#error-message');
 		
-		$('.documents .switch').on('change', function() {
+		$('.documents .switch').on('change', showMenu);
+		
+		$('.document-row').on('click', function() {
 			
-			var hasSomeDocumentSelected = $('.documents .switch:checked').isPresent();
+			var $selectedListDocument = $(this),
+				documentKey = $selectedListDocument.first().id.replace('row-', ''),
+				selectedDocument = $('#document-' + documentKey).first();
 			
-			if (hasSomeDocumentSelected) {
-				$('#menu').addClass('enabled');
+			if (selectedDocument.checked) {
+				$selectedListDocument.removeClass('selected');
+				selectedDocument.checked = false;
 			} else {
-				$('#menu').removeClass('enabled');
+				$selectedListDocument.addClass('selected');
+				selectedDocument.checked = true;
 			}
+			
+			showMenu();
+			
 		});
 		
 		$('input[name="selected-signer"]').on('change', function() {
@@ -42,8 +62,8 @@ define(['doc', 'ajax'], function($, ajax) {
 			$sendButton.addClass('loading');
 			
 			var selectedSignerKey = $('input[name="selected-signer"]:checked').val(),
-				documentKeys = $('.documents .switch').els.map(function(document) {
-					return document.id;
+				documentKeys = $('.documents .switch:checked').els.map(function(document) {
+					return document.id.replace('document-', '');
 				}),
 				signAs = $('input[name="selected-signer"]:checked').data('signas');
 			
